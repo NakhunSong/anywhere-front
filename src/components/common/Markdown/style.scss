@@ -1,0 +1,26 @@
+.blockquote-render {
+  margin: 2px 0;
+  padding-left: 20px;
+  border-left: 2px solid grey;
+}
+
+.code-render {
+  margin: 20px 0;
+  padding: 15px;
+  color: black;
+  background: white;
+  border-radius: 8px;
+  white-space: pre-wrap !important;
+}
+
+.table-render {
+  border: 1px solid grey;
+}
+
+.table-cell-render {
+  border: 1px solid grey;
+}
+
+.inline-render {
+  background: black;
+}

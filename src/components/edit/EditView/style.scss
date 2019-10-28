@@ -1,0 +1,47 @@
+@import "styles/utils";
+
+.edit-container {
+  margin: 2rem auto;
+  padding: 2rem 2rem;
+  max-width: 1250px;
+  min-height: 350px;
+  border-radius: 4px;
+  background: rgba(170, 106, 42, 0.8);
+  color: white;
+  @include material-shadow(3, 2);
+
+  .edit-title {
+    textarea {
+      width: 100%;
+      font-size: 2rem;
+      @include media("<x-large") {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .edit-content {
+    margin-top: 5px;
+    display: flex;
+    width: 100%;
+    .edit-content-input {
+      flex: 0.5;
+      border-right: 2px solid $transparentWhite;
+      textarea {
+        font-size: 1.2rem;
+        width: 100%;
+        @include media("<medium") {
+          font-size: 12px;
+        }
+      }
+      @include media("<medium") {
+        flex: 1;
+        border-right: none;
+      }
+    }
+  }
+  .edit-content-preview {
+    flex: 0.5;
+    margin-left: 10px;
+  }
+}

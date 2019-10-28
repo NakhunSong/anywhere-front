@@ -1,0 +1,17 @@
+@import "styles/utils";
+
+.popover-button-wrap {
+  width: 80px;
+  display: flex;
+  justify-content: space-around;
+
+  .popover-button {
+    font-size: 2rem;
+
+    &:hover {
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.2, 1.2);
+    }
+  }
+}

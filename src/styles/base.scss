@@ -1,0 +1,54 @@
+@import url("//fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url("//cdn.jsdelivr.net/gh/velopert/font-d2coding@1.2.1/d2coding.css");
+@import './reset.scss';
+@import './utils.scss';
+
+html, body {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:link {
+  text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: white;
+}
+
+input,
+textarea {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  resize: none;
+  &::placeholder {
+    color: $transparentWhite;
+  }
+  &:focus,
+  &:active{
+    outline: none;
+  }
+}
+
+button {
+  color: white;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: 2.5px solid white;
+  &:focus,
+  &:active{
+      outline: none
+  }
+}

@@ -1,0 +1,18 @@
+@import "styles/utils";
+
+.default-button {
+  font-weight: 600;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.2, 1.2);
+  }
+}
+.big {
+  font-size: 1.5rem;
+}
+
+.black {
+  color: black;
+}
