@@ -63,6 +63,6 @@ declare module '*.module.sass' {
   export default classes;
 }
 
-declare module "react-markdown/with-html";
-declare module "react-textarea-autosize";
-declare module "remark-breaks";
+declare module 'react-markdown/with-html';
+declare module 'react-textarea-autosize';
+declare module 'remark-breaks';

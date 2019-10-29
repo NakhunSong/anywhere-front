@@ -30,7 +30,7 @@ export const actionCreators = {
   resetMemo,
 };
 
-type MemoAction =
+type MemoActions =
   | ReturnType<typeof getMemo>
   | ReturnType<typeof getMemoSuccess>
   | ReturnType<typeof resetMemo>;
@@ -48,7 +48,7 @@ const initialState: IMemoState = {
   content: '',
 };
 
-export default function reducer(state = initialState, action: MemoAction) {
+export default function reducer(state = initialState, action: MemoActions) {
   switch(action.type) {
     case GET_MEMO: {
       return {

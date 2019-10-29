@@ -1,4 +1,4 @@
-import { IMemoState } from "./memo";
+import { IMemoState } from './memo';
 
 // actions
 export const GET_MEMO_LIST = 'list/GET_MEMO_LIST' as const;
@@ -18,7 +18,7 @@ export const actionCreators = {
   getMemoListSuccess,
 };
 
-type ListAction =
+type ListActions =
   | ReturnType<typeof getMemoList>
   | ReturnType<typeof getMemoListSuccess>;
 
@@ -32,7 +32,7 @@ const initialState: IMemoListState = {
 };
 
 // reducer
-export default function reducer(state = initialState, action: ListAction) {
+export default function reducer(state = initialState, action: ListActions) {
   switch (action.type) {
     case GET_MEMO_LIST: {
       return {

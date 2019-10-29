@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import "./style.scss";
+import './style.scss';
 
 interface IProps {
   children: React.ReactNode;
   button: React.ReactNode;
-  to: string;
+  to?: string;
 }
 
 const PageTemplate = ({

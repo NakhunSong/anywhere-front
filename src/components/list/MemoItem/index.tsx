@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import "./style.scss";
-import { IMemoState } from "reducers/memo";
+import { IMemoState } from 'reducers/memo';
+import './style.scss';
 
 interface IProps {
   memo: IMemoState;

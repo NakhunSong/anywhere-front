@@ -1,13 +1,13 @@
-import { IMemoState } from "./memo";
+import { IMemoState } from './memo';
 
 // action type
-export const CHANGE_TITLE = "edit/CHANGE_TITLE" as const;
-export const CHANGE_CONTENT = "edit/CHANGE_CONTENT" as const;
-export const RESET_EDIT = "edit/RESET_EDIT" as const;
-export const GET_MEMO = "edit/GET_MEMO" as const;
-export const ADD_MEMO = "edit/ADD_MEMO" as const;
-export const EDIT_MEMO = "edit/EDIT_MEMO" as const;
-export const REMOVE_MEMO = "edit/REMOVE_MEMO" as const;
+export const CHANGE_TITLE = 'edit/CHANGE_TITLE' as const;
+export const CHANGE_CONTENT = 'edit/CHANGE_CONTENT' as const;
+export const RESET_EDIT = 'edit/RESET_EDIT' as const;
+export const GET_MEMO = 'edit/GET_MEMO' as const;
+export const ADD_MEMO = 'edit/ADD_MEMO' as const;
+export const EDIT_MEMO = 'edit/EDIT_MEMO' as const;
+export const REMOVE_MEMO = 'edit/REMOVE_MEMO' as const;
 
 // action creator
 const changeTitle = (title: string) => ({
@@ -69,7 +69,7 @@ export const actionCreators = {
   removeMemo,
 };
 
-type EditAction =
+type EditActions =
   | ReturnType<typeof changeTitle>
   | ReturnType<typeof changeContent>
   | ReturnType<typeof resetEdit>
@@ -81,8 +81,8 @@ type EditAction =
 // initial state
 export interface IEditState {
   id: number;
-  title?: string;
-  content?: string;
+  title: string;
+  content: string;
   isModify: boolean;
 }
 
@@ -93,7 +93,7 @@ const initialState: IEditState = {
   isModify: false,
 };
 
-export default function reducer(state = initialState, action: EditAction) {
+export default function reducer(state = initialState, action: EditActions) {
   switch (action.type) {
     case CHANGE_TITLE: {
       return {

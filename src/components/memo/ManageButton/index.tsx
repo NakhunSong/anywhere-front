@@ -1,9 +1,10 @@
-import React from "react";
-import { Icon, Popover } from "antd";
-import Button from "components/common/Button";
-import "./style.scss";
+import React from 'react';
+import { Icon, Popover } from 'antd';
+import Button from 'components/common/Button';
+import './style.scss';
 
 interface IProps {
+  memoId: number;
   handleRemove: () => void | null;
   handleModify: () => void | null;
 }

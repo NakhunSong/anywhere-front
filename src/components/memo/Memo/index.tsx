@@ -1,7 +1,7 @@
-import React from "react";
-import "./style.scss";
-import Markdown from "components/common/Markdown";
-import { IMemoState } from "reducers/memo";
+import React from 'react';
+import Markdown from 'components/common/Markdown';
+import { IMemoState } from 'reducers/memo';
+import './style.scss';
 
 const Memo = ({
   title,

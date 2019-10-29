@@ -1,14 +1,14 @@
-import React from "react";
-import TextArea from "react-textarea-autosize";
+import React from 'react';
+import TextArea from 'react-textarea-autosize';
 
-import "./style.scss";
-import Markdown from "components/common/Markdown";
+import Markdown from 'components/common/Markdown';
+import './style.scss';
 
 interface IProps {
   title?: string;
   content?: string;
-  handleChangeTitle: () => void;
-  handleChangeContent: () => void;
+  handleChangeTitle: (e: React.FormEvent<HTMLInputElement>) => void;
+  handleChangeContent: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const EditView = ({

@@ -1,8 +1,15 @@
-import React from "react";
+import React from 'react';
+import EditContainer from 'containers/edit/EditContainer';
 
-const EditPage = () => {
+interface IProps {
+  history: any;
+}
+
+const EditPage = ({ history }: IProps) => {
   return (
-    <div>Edit</div>
+    <EditContainer
+      history={history}
+    />
   );
 };
 

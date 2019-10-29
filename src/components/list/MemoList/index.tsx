@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import "./style.scss";
-import MemoItem from "../MemoItem";
-import { IMemoState } from "reducers/memo";
+import { IMemoState } from 'reducers/memo';
+import MemoItem from '../MemoItem';
+import './style.scss';
 
 interface IProps {
   list: IMemoState[];
