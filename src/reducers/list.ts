@@ -3,6 +3,7 @@ import { IMemoState } from './memo';
 // actions
 export const GET_MEMO_LIST = 'list/GET_MEMO_LIST' as const;
 export const GET_MEMO_LIST_SUCCESS = 'list/GET_MEMO_LIST_SUCCESS' as const;
+export const GET_MEMO_LIST_FAILURE = 'list/GET_MEMO_LIST_FAILURE' as const;
 
 // action creators
 const getMemoList = () => ({ type: GET_MEMO_LIST });
@@ -12,15 +13,22 @@ const getMemoListSuccess = (payload: IMemoState[]) => {
     payload,
   };
 };
+const getMemoListFailure = () => {
+  return {
+    type: GET_MEMO_LIST_FAILURE,
+  };
+};
 
 export const actionCreators = {
   getMemoList,
   getMemoListSuccess,
+  getMemoListFailure,
 };
 
-type ListActions =
+export type ListActions =
   | ReturnType<typeof getMemoList>
-  | ReturnType<typeof getMemoListSuccess>;
+  | ReturnType<typeof getMemoListSuccess>
+  | ReturnType<typeof getMemoListFailure>;
 
 // initial state
 export interface IMemoListState {
@@ -42,6 +50,11 @@ export default function reducer(state = initialState, action: ListActions) {
     case GET_MEMO_LIST_SUCCESS: {
       return {
         memoList: action.payload,
+      };
+    }
+    case GET_MEMO_LIST_FAILURE: {
+      return {
+        ...state,
       };
     }
     default: {

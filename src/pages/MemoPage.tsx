@@ -1,8 +1,17 @@
 import React from 'react';
+import MemoContainer from 'containers/memo/MemoContainer';
 
-const MemoPage = () => {
+interface IProps {
+  history: any;
+  match: any;
+}
+
+const MemoPage = ({ history, match }: IProps) => {
   return (
-    <div>Memo</div>
+    <MemoContainer
+      history={history}
+      match={match}
+    />
   );
 };
 

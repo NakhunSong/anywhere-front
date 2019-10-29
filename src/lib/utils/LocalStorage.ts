@@ -25,8 +25,8 @@ export const pushItem = (itemName: string, object: IMemoState): void => {
 /**
  * Set data to localStorage item named by itemName
  */
-export const setItem = (itemName: string, object: IMemoState): void => {
-  const list = object || [];
+export const setItem = (itemName: string, object: IMemoState[]): void => {
+  const list: IMemoState[] = object || [];
   (global as any).localStorage.setItem(itemName, JSON.stringify(list));
 };
 

@@ -8,7 +8,8 @@
       "ordered-imports": false,
       "object-literal-sort-keys" : false,
       "quotemark": false,
-      "member-access": false
+      "member-access": false,
+      "align": false
     },
     "rulesDirectory": []
 }

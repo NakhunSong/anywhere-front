@@ -24,7 +24,7 @@ class EditContainer extends PureComponent<IProps> {
     EditActions.changeTitle(value);
   }
 
-  handleChangeContent = (event: React.FormEvent<HTMLInputElement>) => {
+  handleChangeContent = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const { value } = event.currentTarget;
     const { EditActions } = this.props;
     EditActions.changeContent(value);

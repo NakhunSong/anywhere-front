@@ -8,7 +8,7 @@ interface IProps {
   title?: string;
   content?: string;
   handleChangeTitle: (e: React.FormEvent<HTMLInputElement>) => void;
-  handleChangeContent: (e: React.FormEvent<HTMLInputElement>) => void;
+  handleChangeContent: (e: React.FormEvent<HTMLTextAreaElement>) => void;
 }
 
 const EditView = ({

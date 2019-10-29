@@ -1,6 +1,7 @@
 // action type
 export const GET_MEMO = 'memo/GET_MEMO' as const;
 export const GET_MEMO_SUCCESS = 'memo/GET_MEMO_SUCCESS' as const;
+export const GET_MEMO_FAILURE = 'memo/GET_MEMO_FAILURE' as const;
 export const RESET_MEMO = 'memo/RESET_MEMO' as const;
 
 // action creator
@@ -18,6 +19,7 @@ const getMemoSuccess = (payload: IMemoState) => {
     payload,
   };
 };
+const getMemoFailure = () => ({ type: GET_MEMO_FAILURE });
 const resetMemo = () => {
   return {
     type: RESET_MEMO,
@@ -30,10 +32,15 @@ export const actionCreators = {
   resetMemo,
 };
 
-type MemoActions =
-  | ReturnType<typeof getMemo>
-  | ReturnType<typeof getMemoSuccess>
-  | ReturnType<typeof resetMemo>;
+export type getMemoAction = ReturnType<typeof getMemo>;
+export type getMemoSuccessAction = ReturnType<typeof getMemoSuccess>;
+export type getMemoFailureAction = ReturnType<typeof getMemoFailure>;
+export type resetMemoAction = ReturnType<typeof resetMemo>;
+export type MemoActions =
+  | getMemoAction
+  | getMemoSuccessAction
+  | getMemoFailureAction
+  | resetMemoAction;
 
 // initial state
 export interface IMemoState {
@@ -49,7 +56,7 @@ const initialState: IMemoState = {
 };
 
 export default function reducer(state = initialState, action: MemoActions) {
-  switch(action.type) {
+  switch (action.type) {
     case GET_MEMO: {
       return {
         ...state,
@@ -64,6 +71,11 @@ export default function reducer(state = initialState, action: MemoActions) {
           content: payload.content,
         };
       }
+      return {
+        ...state,
+      };
+    }
+    case GET_MEMO_FAILURE: {
       return {
         ...state,
       };
