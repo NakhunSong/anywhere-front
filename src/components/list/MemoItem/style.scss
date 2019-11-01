@@ -7,7 +7,7 @@
   grid-auto-rows: 100px;
   flex-wrap: wrap;
 
-  background-color: rgba(170, 106, 42, 0.9);
+  background-color: $memoColor;
   width: 15rem;
   height: 17rem;
   padding: 1.5rem;
@@ -16,6 +16,11 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   margin-top: 3rem;
   
+  &:hover {
+    background: rgba(0, 0, 0, 0.19);
+    transition: all .20s ease-in;
+    transform: scale(1.1, 1.1);
+  }
 
   .memo-title {
     font-size: 1.3rem;

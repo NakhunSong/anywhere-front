@@ -1,18 +1,11 @@
 import React from 'react';
 import './style.scss';
 
-interface IProps {
-  props: {
-    children: React.ReactNode,
-    value: string,
-  };
-}
-
-export const BlockQuote = ({ props }: IProps) => {
+export const BlockQuote = (props: any) => {
   return <div className="blockquote-render">{props.children}</div>;
 };
 
-export const Code = ({ props }: IProps) => {
+export const Code = (props: any) => {
   return (
     <pre className="code-render">
       <code>
@@ -22,7 +15,7 @@ export const Code = ({ props }: IProps) => {
   );
 };
 
-export const Table = ({ props }: IProps) => {
+export const Table = (props: any) => {
   return (
     <table className="table-render">
       {props.children}
@@ -30,7 +23,7 @@ export const Table = ({ props }: IProps) => {
   );
 };
 
-export const TableCell = ({ props }: IProps) => {
+export const TableCell = (props: any) => {
   return (
     <td className="table-cell-render">
       {props.children}
@@ -38,6 +31,6 @@ export const TableCell = ({ props }: IProps) => {
   );
 };
 
-export const Inline = ({ props }: IProps) => {
+export const Inline = (props: any) => {
   return <span className="inline-render">{props.value}</span>;
 };
