@@ -6,7 +6,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path="/" component={MemosPage} />
-      <Route path="/memo/:id?" component={MemoPage} />
+      <Route path="/memo/:memoId?" component={MemoPage} />
       <Route path="/edit" component={EditPage} />
     </Switch>
   );

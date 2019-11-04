@@ -7,11 +7,11 @@ import { getItem } from 'lib/utils/LocalStorage';
  */
 function getMemoAPI(memoId: number): IMemoState {
   const list: IMemoState[] = getItem('list');
-  const memoIndex: number  = list.findIndex((l) => l.id === memoId);
+  const memoIndex: number  = list.findIndex((l) => l.memoId === memoId);
   return list[memoIndex];
 }
 function* getMemo(action: getMemoAction) {
-  const result: IMemoState = yield call(getMemoAPI, action.payload.id);
+  const result: IMemoState = yield call(getMemoAPI, action.payload.memoId);
   try {
     yield put({
       type: GET_MEMO_SUCCESS,

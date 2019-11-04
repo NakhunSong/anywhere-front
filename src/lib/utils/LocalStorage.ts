@@ -36,5 +36,5 @@ export const setItem = (itemName: string, object: IMemoState[]): void => {
 export const getNextId = (itemName: string): number => {
   let list = (global as any).localStorage.getItem(itemName);
   list = list ? JSON.parse(list) : [];
-  return list.length > 0 ? list[list.length - 1].id + 1 : 0;
+  return list.length > 0 ? list[list.length - 1].memoId + 1 : 0;
 };

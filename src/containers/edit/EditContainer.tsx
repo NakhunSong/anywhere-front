@@ -11,7 +11,7 @@ import { IStoreState } from 'reducers';
 interface IProps {
   history: any;
   EditActions: typeof editActions;
-  id: number;
+  memoId: number;
   title: string;
   content: string;
   isModify: boolean;
@@ -34,24 +34,24 @@ class EditContainer extends PureComponent<IProps> {
     const {
       history,
       EditActions,
-      id,
+      memoId,
       title,
       content,
       isModify,
     } = this.props;
 
     const memo = {
-      id,
+      memoId,
       title,
       content,
     };
     if (isModify) {
       EditActions.editMemo(memo);
-      history.push(`/memo/${id}`);
+      history.push(`/memo/${memoId}`);
       return;
     }
     EditActions.addMemo(memo);
-    history.push(`/memo/${id}`);
+    history.push(`/memo/${memoId}`);
   }
 
   render() {
@@ -77,7 +77,7 @@ class EditContainer extends PureComponent<IProps> {
 
 export default connect(
   (state: IStoreState) => ({
-    id: state.edit.id,
+    memoId: state.edit.memoId,
     title: state.edit.title,
     content: state.edit.content,
     isModify: state.edit.isModify,

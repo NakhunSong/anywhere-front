@@ -30,10 +30,10 @@ const changeContent = (content: string) => ({
   },
 });
 
-const resetEdit = (id: number) => ({
+const resetEdit = (memoId: number) => ({
   type: RESET_EDIT,
   payload: {
-    id,
+    memoId,
   },
 });
 
@@ -60,10 +60,10 @@ const editMemo = (memo: IMemoState) => ({
 });
 const editMemoSuccess = () => ({ type: EDIT_MEMO_SUCCESS });
 const editMemoFailure = () => ({ type: EDIT_MEMO_FAILURE });
-const removeMemo = (id: number) => ({
+const removeMemo = (memoId: number) => ({
   type: REMOVE_MEMO,
   payload: {
-    id,
+    memoId,
   },
 });
 const removeMemoSuccess = () => ({ type: REMOVE_MEMO_SUCCESS });
@@ -114,14 +114,14 @@ type EditActions =
 
 // initial state
 export interface IEditState {
-  id: number;
+  memoId: number;
   title: string;
   content: string;
   isModify: boolean;
 }
 
 const initialState: IEditState = {
-  id: 0,
+  memoId: 0,
   title: "",
   content: "",
   isModify: false,
@@ -143,7 +143,7 @@ export default function reducer(state = initialState, action: EditActions) {
     }
     case RESET_EDIT: {
       return {
-        id: action.payload.id,
+        memoId: action.payload.memoId,
         title: "",
         content: "",
         isModify: false,
@@ -151,7 +151,7 @@ export default function reducer(state = initialState, action: EditActions) {
     }
     case GET_MEMO: {
       return {
-        id: action.payload.memo.id,
+        memoId: action.payload.memo.memoId,
         title: action.payload.memo.title,
         content: action.payload.memo.content,
         isModify: action.payload.memo.isModify,

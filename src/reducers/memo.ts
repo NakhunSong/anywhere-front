@@ -5,11 +5,11 @@ export const GET_MEMO_FAILURE = 'memo/GET_MEMO_FAILURE' as const;
 export const RESET_MEMO = 'memo/RESET_MEMO' as const;
 
 // action creator
-const getMemo = (id: number) => {
+const getMemo = (memoId: number) => {
   return {
     type: GET_MEMO,
     payload: {
-      id,
+      memoId,
     },
   };
 };
@@ -44,13 +44,13 @@ export type MemoActions =
 
 // initial state
 export interface IMemoState {
-  id: number;
+  memoId: number;
   title: string;
   content: string;
 }
 
 const initialState: IMemoState = {
-  id: 0,
+  memoId: 0,
   title: '',
   content: '',
 };
@@ -66,7 +66,7 @@ export default function reducer(state = initialState, action: MemoActions) {
       const { payload } = action;
       if (payload) {
         return {
-          id: payload.id,
+          memoId: payload.memoId,
           title: payload.title,
           content: payload.content,
         };
@@ -82,7 +82,7 @@ export default function reducer(state = initialState, action: MemoActions) {
     }
     case RESET_MEMO: {
       return {
-        id: 0,
+        memoId: 0,
         title: '',
         content: '',
       };

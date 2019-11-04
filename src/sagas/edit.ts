@@ -13,7 +13,7 @@ function addMemoAPI(memo: IMemoState): IMemoState {
 function* addMemo(action: addMemoAction) {
   try {
     const result: IMemoState = yield call(addMemoAPI, action.payload.memo);
-    const id: number = result.id + 1;
+    const memoId: number = result.memoId + 1;
     yield put({
       type: GET_MEMO_SUCCESS,
       payload: result,
@@ -21,7 +21,7 @@ function* addMemo(action: addMemoAction) {
     yield put({
       type: RESET_EDIT,
       payload: {
-        id,
+        memoId,
       },
     });
   } catch (e) {
@@ -37,7 +37,7 @@ function* watchAddMemo() {
  */
 function editMemoAPI(memo: IMemoState): IMemoState {
   const newList: IMemoState[] = getItem('list').map((m) => {
-    if (m.id === memo.id) {
+    if (m.memoId === memo.memoId) {
       return memo;
     }
     return m;
@@ -47,7 +47,7 @@ function editMemoAPI(memo: IMemoState): IMemoState {
 }
 function* editMemo(action: editMemoAction) {
   const result: IMemoState = yield call(editMemoAPI, action.payload.memo);
-  const id: number = result.id + 1;
+  const memoId: number = result.memoId + 1;
   try {
     yield put({
       type: GET_MEMO_SUCCESS,
@@ -56,7 +56,7 @@ function* editMemo(action: editMemoAction) {
     yield put({
       type: RESET_EDIT,
       payload: {
-        id,
+        memoId,
       },
     });
   } catch (e) {
@@ -71,17 +71,17 @@ function* watchEditMemo() {
  * Remove memo
  */
 function removeMemoAPI(memoId: number): void {
-  const list: IMemoState[] = getItem('list').filter((l) => l.id !== memoId);
+  const list: IMemoState[] = getItem('list').filter((l) => l.memoId !== memoId);
   setItem('list', list);
 }
 function* removeMemo(action: removeMemoAction) {
-  const id: number = getNextId('list');
-  yield call(removeMemoAPI, action.payload.id);
+  const memoId: number = getNextId('list');
+  yield call(removeMemoAPI, action.payload.memoId);
   try {
     yield put({
       type: RESET_EDIT,
       payload: {
-        id,
+        memoId,
       },
     });
     yield put({

@@ -12,7 +12,7 @@ interface IProps {
 const MemoList = ({ list }: IProps) => {
   return (
     <div className="memolist-container">
-      {list.map((memo) => <Link to={`/memo/${memo.id}`} key={memo.id}><MemoItem memo={memo} /></Link>)}
+      {list.map((memo) => <Link to={`/memo/${memo.memoId}`} key={memo.memoId}><MemoItem memo={memo} /></Link>)}
     </div>
   );
 };

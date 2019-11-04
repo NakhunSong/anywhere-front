@@ -14,7 +14,7 @@ interface IProps {
   match: any;
   EditActions: typeof editActions;
   MemoActions: typeof memoActions;
-  id: number;
+  memoId: number;
   title: string;
   content: string;
 }
@@ -26,8 +26,8 @@ class MemoContainer extends PureComponent<IProps> {
 
   initialize = (): void => {
     const { match, MemoActions } = this.props;
-    const { id } = match.params;
-    MemoActions.getMemo(parseInt(id, 10));
+    const { memoId } = match.params;
+    MemoActions.getMemo(parseInt(memoId, 10));
   }
 
   handleRemove = (): void => {
@@ -36,8 +36,8 @@ class MemoContainer extends PureComponent<IProps> {
       EditActions,
       match,
     } = this.props;
-    const { id } = match.params;
-    EditActions.removeMemo(parseInt(id, 10));
+    const { memoId } = match.params;
+    EditActions.removeMemo(parseInt(memoId, 10));
     history.goBack();
   }
 
@@ -45,12 +45,12 @@ class MemoContainer extends PureComponent<IProps> {
     const {
       history,
       EditActions,
-      id,
+      memoId,
       title,
       content,
     } = this.props;
     const memo = {
-      id,
+      memoId,
       title,
       content,
       isModify: true,
@@ -60,20 +60,20 @@ class MemoContainer extends PureComponent<IProps> {
   }
 
   render() {
-    const { id, title, content } = this.props;
+    const { memoId, title, content } = this.props;
     const { handleRemove, handleModify } = this;
     return (
       <PageTemplate
         button={(
           <ManageButton
-            memoId={id}
+            memoId={memoId}
             handleRemove={handleRemove}
             handleModify={handleModify}
           />
         )}
       >
         <Memo
-          id={id}
+          memoId={memoId}
           title={title}
           content={content}
         />
@@ -84,7 +84,7 @@ class MemoContainer extends PureComponent<IProps> {
 
 export default connect(
   (state: IStoreState) => ({
-    id: state.memo.id,
+    memoId: state.memo.memoId,
     title: state.memo.title,
     content: state.memo.content,
   }),

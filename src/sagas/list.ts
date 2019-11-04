@@ -19,7 +19,7 @@ function getMemoListAPI(): IMemoState[] {
 function* getMemoList() {
   try {
     const result: IMemoState[] = yield call(getMemoListAPI);
-    const id: number = getNextId('list');
+    const memoId: number = getNextId('list');
     try {
       yield put({
         type: GET_MEMO_LIST_SUCCESS,
@@ -28,7 +28,7 @@ function* getMemoList() {
       yield put({
         type: RESET_EDIT,
         payload: {
-          id,
+          memoId,
         },
       });
   } catch (e) {
