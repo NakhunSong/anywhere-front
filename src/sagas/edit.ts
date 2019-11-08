@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { all, put, call, takeLatest } from 'redux-saga/effects';
-import { ADD_MEMO, RESET_EDIT, EDIT_MEMO, REMOVE_MEMO, addMemoAction, editMemoAction, removeMemoAction, ADD_MEMO_FAILURE, ADD_MEMO_SUCCESS, REMOVE_MEMO_SUCCESS, REMOVE_MEMO_FAILURE } from 'reducers/edit';
+import { ADD_MEMO, RESET_EDIT, EDIT_MEMO, REMOVE_MEMO, addMemoAction, editMemoAction, removeMemoAction, ADD_MEMO_FAILURE, ADD_MEMO_SUCCESS, REMOVE_MEMO_SUCCESS, REMOVE_MEMO_FAILURE, EDIT_MEMO_SUCCESS, EDIT_MEMO_FAILURE } from 'reducers/edit';
 import { GET_MEMO_SUCCESS, RESET_MEMO, IMemoState } from 'reducers/memo';
 import { getItem, setItem, pushItem, getNextId } from 'lib/utils/LocalStorage';
 
@@ -42,23 +42,26 @@ function* watchAddMemo() {
 /**
  * Edit memo
  */
-function editMemoAPI(memo: IMemoState): IMemoState {
-  const newList: IMemoState[] = getItem('list').map((m) => {
-    if (m.memoId === memo.memoId) {
-      return memo;
-    }
-    return m;
-  });
-  setItem('list', newList);
-  return memo;
+function editMemoAPI(memoId: number, memo: IMemoState): Promise<number> {
+  // const newList: IMemoState[] = getItem('list').map((m) => {
+  //   if (m.memoId === memo.memoId) {
+  //     return memo;
+  //   }
+  //   return m;
+  // });
+  // setItem('list', newList);
+  // return memo;
+  return axios.put(`/memo/api/memo/${memoId}`, memo);
 }
 function* editMemo(action: editMemoAction) {
-  const result: IMemoState = yield call(editMemoAPI, action.payload.memo);
-  const memoId: number = result.memoId + 1;
+  const { memo } = action.payload;
+  // const result: IMemoState = yield call(editMemoAPI, memo);
+  yield call(editMemoAPI, memo.memoId, memo);
+  const memoId: number = memo.memoId + 1;
   try {
     yield put({
       type: GET_MEMO_SUCCESS,
-      payload: result,
+      payload: memo,
     });
     yield put({
       type: RESET_EDIT,
@@ -66,7 +69,13 @@ function* editMemo(action: editMemoAction) {
         memoId,
       },
     });
+    yield put({
+      type: EDIT_MEMO_SUCCESS,
+    });
   } catch (e) {
+    yield put({
+      type: EDIT_MEMO_FAILURE,
+    });
     console.error(e);
   }
 }
