@@ -13,7 +13,10 @@ const MemoItem = ({ memo }: IProps) => {
       className="memo-container"
     >
       <h2 className="memo-title">
-        {memo.title.length < 21 ? memo.title : `${memo.title.substring(0, 21)}...` }
+        {memo.title.length < 21
+          ? memo.title
+          : `${memo.title.substring(0, 21)}...`
+        }
       </h2>
       <div></div>
       <div className="memo-content">

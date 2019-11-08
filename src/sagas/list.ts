@@ -23,7 +23,7 @@ function getMemoListAPI(): Promise<IMemoState[]> {
 function* getMemoList() {
   try {
     const { data } = yield call(getMemoListAPI);
-    const memoId: number = getNextId('list');
+    const memoId: number = data.length;
     try {
       yield put({
         type: GET_MEMO_LIST_SUCCESS,
